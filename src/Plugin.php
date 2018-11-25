@@ -41,6 +41,17 @@ class Plugin extends \craft\base\Plugin
             $variable = $event->sender;
             $variable->set('cloudinary', CloudinaryVariable::class);
         });
+
+        Event::on(
+        Cp::class,
+        Cp::EVENT_REGISTER_CP_NAV_ITEMS,
+        function(RegisterCpNavItemsEvent $event) {
+            $event->navItems[] = [
+                'url' => 'cloudinary',
+                'label' => 'Media Manager',
+            ];
+        }
+    );
     }
     
     protected function createSettingsModel()
