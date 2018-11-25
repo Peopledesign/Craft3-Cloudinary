@@ -1,3 +1,30 @@
-{% extends "_layouts/cp" %} {% set title = "Page Title"|t('plugin-handle') %} {% block content %}
-<p>Page content goes here</p>
+{% extends "_layouts/cp" %}
+{% set title = "Media Library"|t('cloudinary') %}{% block content %}
+<script src="https://media-library.cloudinary.com/global/all.js"></script>
+<div class="cms-container"></div>
+<style>
+    .cms-container {
+        height: 88vh;
+    }
+</style>
+<script>
+    const mloptions = {
+        cloud_name: '{{ craft.cloudinary.settings.cloudName }}',
+        api_key: '{{ craft.cloudinary.settings.apiKey }}',
+        username: '{{ craft.cloudinary.settings.cloudinaryUser }}',
+        timestamp: '1234567890',
+        signature: 'abcdefgh',
+        inline_container: '.cms-container',
+        multiple: true,
+        max_files: 8,
+    }
+    window.ml = cloudinary.openMediaLibrary(mloptions, {
+        insertHandler: function(data) {
+            data.assets.forEach(asset => {
+                console.log("Inserted asset:",
+                    JSON.stringify(asset, null, 2))
+            })
+        }
+    })
+</script>
 {% endblock %}
