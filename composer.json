@@ -1,5 +1,5 @@
 {
-    "name": "futureactivities/craft3-cloudinary",
+    "name": "peopledesign/craft3-cloudinary",
     "description": "Cloudinary volume for Craft 3",
     "type": "craft-plugin",
     "version": "0.8.0",
@@ -14,6 +14,9 @@
     "authors": [{
         "name": "Future Activities",
         "homepage": "https://github.com/FutureActivities"
+    }, {
+        "name": "Peopledesign",
+        "homepage": "https://github.com/Peopledesign"
     }],
     "require": {
         "craftcms/cms": "^3.0.0-beta.24",
