@@ -2,7 +2,9 @@
 namespace futureactivities\cloudinary;
 
 use craft\events\RegisterComponentTypesEvent;
+use craft\events\RegisterCpNavItemsEvent;
 use craft\services\Volumes;
+use craft\web\twig\variables\Cp;
 use craft\web\twig\variables\CraftVariable;
 use craft\services\Assets;
 use yii\base\Event;
@@ -47,7 +49,7 @@ class Plugin extends \craft\base\Plugin
         Cp::EVENT_REGISTER_CP_NAV_ITEMS,
         function(RegisterCpNavItemsEvent $event) {
             $event->navItems[] = [
-                'url' => 'Craft3-Cloudinary/cloudinary',
+                'url' => 'craft3-cloudinary/cloudinary',
                 'label' => 'Media Manager',
             ];
         }
