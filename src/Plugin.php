@@ -47,7 +47,7 @@ class Plugin extends \craft\base\Plugin
         Cp::EVENT_REGISTER_CP_NAV_ITEMS,
         function(RegisterCpNavItemsEvent $event) {
             $event->navItems[] = [
-                'url' => 'cloudinary',
+                'url' => 'Craft3-Cloudinary/cloudinary',
                 'label' => 'Media Manager',
             ];
         }
