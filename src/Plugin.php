@@ -50,7 +50,7 @@ class Plugin extends \craft\base\Plugin
         function(RegisterCpNavItemsEvent $event) {
             $event->navItems[] = [
                 'url' => 'cloudinary/cloudinary',
-                'label' => 'Media Manager',
+                'label' => 'Media Library',
             ];
         }
     );
