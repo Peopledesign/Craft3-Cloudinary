@@ -30,7 +30,7 @@
         multiple: true,
         max_files: 8,
     }
-    mloptions.signature=sha256('{{ "cloud_name={{craft.cloudinary.settings.cloudName }}&timestamp='+mloptions.timestamp+'&username={{ craft.cloudinary.settings.userName }}"|pre}}')
+    mloptions.signature=sha256('{{ "cloud_name={{craft.cloudinary.settings.cloudName }}&timestamp='+mloptions.timestamp+'&username={{ craft.cloudinary.settings.userName }}"}}')
     window.ml = cloudinary.openMediaLibrary(mloptions, {
         insertHandler: function(data) {
             data.assets.forEach(asset => {
