@@ -1,5 +1,4 @@
-{% extends "_layouts/cp" %}
-{% set title = "Media Library"|t('cloudinary') %}{% block content %}
+{% extends "_layouts/cp" %} {% set title = "Media Library"|t('cloudinary') %}{% block content %}
 <script src="https://media-library.cloudinary.com/global/all.js"></script>
 <div class="cms-container"></div>
 <style>
@@ -11,7 +10,7 @@
     const mloptions = {
         cloud_name: '{{ craft.cloudinary.settings.cloudName }}',
         api_key: '{{ craft.cloudinary.settings.apiKey }}',
-        username: '{{ craft.cloudinary.settings.cloudinaryUser }}',
+        username: '{{ craft.cloudinary.settings.userName }}',
         timestamp: '1234567890',
         signature: 'abcdefgh',
         inline_container: '.cms-container',
