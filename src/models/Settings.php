@@ -9,7 +9,7 @@ class Settings extends Model
     public $apiKey;
     public $apiSecret;
     public $cloudName;
-    public $cloudinaryUser;
+    public $userName;
     public $overwrite = true;
 
     public function rules()
