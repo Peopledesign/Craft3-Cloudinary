@@ -12,7 +12,7 @@
         api_key: '{{ craft.cloudinary.settings.apiKey }}',
         username: '{{ craft.cloudinary.settings.userName }}',
         timestamp: "{{ now|date('U') }}",
-        signature: {{ hash_hmac('sha256', "cloud_name={{craft.cloudinary.settings.cloudName }}&timestamp={{ now|date('U') }}&username={{ craft.cloudinary.settings.userName }}") }},
+        signature: {{ "cloud_name={{craft.cloudinary.settings.cloudName }}&timestamp={{ now|date('U') }}&username={{ craft.cloudinary.settings.userName }}"|sha2|pre }},
         inline_container: '.cms-container',
         multiple: true,
         max_files: 8,
