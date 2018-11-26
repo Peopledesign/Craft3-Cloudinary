@@ -7,12 +7,26 @@
     }
 </style>
 <script>
+    async function sha256(message) {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder('utf-8').encode(message);                    
+
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // convert bytes to hex string                  
+    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    return hashHex;
+}
     const mloptions = {
         cloud_name: '{{ craft.cloudinary.settings.cloudName }}',
         api_key: '{{ craft.cloudinary.settings.apiKey }}',
         username: '{{ craft.cloudinary.settings.userName }}',
         timestamp: "{{ now|date('U') }}",
-        signature: {{ "cloud_name={{craft.cloudinary.settings.cloudName }}&timestamp={{ now|date('U') }}&username={{ craft.cloudinary.settings.userName }}"|sha2|pre }},
+        signature: sha256('{{ "cloud_name={{craft.cloudinary.settings.cloudName }}&timestamp={{ now|date('U') }}&username={{ craft.cloudinary.settings.userName }}"|pre}}'),
         inline_container: '.cms-container',
         multiple: true,
         max_files: 8,
