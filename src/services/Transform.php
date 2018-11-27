@@ -27,7 +27,12 @@ class Transform extends Component
             unset($options['scaleAndCrop']);
         }
         
-        $urls = $this->generateUrls($image->filename, $sizes, $options);
+        // if image is within a Cloudinary folder, add the folder path
+        if ($image->folderPath) {
+            $urls = $this->generateUrls(str_replace(" ","%20",$image->folderPath).$image->filename, $sizes, $options);
+        } else {
+            $urls = $this->generateUrls($image->filename, $sizes, $options);
+        }
         
         return [
             'alt' => $options['alt'],
