@@ -5,6 +5,9 @@ use futureactivities\cloudinary\Plugin as Cloudinary;
 
 class CloudinaryVariable
 {
+    public function settings(){
+        return Cloudinary::getInstance()->getSettings();
+    }
     public function transform($image, $sizes = [], $options = [])
     {
         return Cloudinary::getInstance()->transform->image($image, $sizes, $options);

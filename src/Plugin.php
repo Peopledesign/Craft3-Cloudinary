@@ -2,7 +2,9 @@
 namespace futureactivities\cloudinary;
 
 use craft\events\RegisterComponentTypesEvent;
+use craft\events\RegisterCpNavItemsEvent;
 use craft\services\Volumes;
+use craft\web\twig\variables\Cp;
 use craft\web\twig\variables\CraftVariable;
 use craft\services\Assets;
 use yii\base\Event;
@@ -41,6 +43,17 @@ class Plugin extends \craft\base\Plugin
             $variable = $event->sender;
             $variable->set('cloudinary', CloudinaryVariable::class);
         });
+
+        Event::on(
+        Cp::class,
+        Cp::EVENT_REGISTER_CP_NAV_ITEMS,
+        function(RegisterCpNavItemsEvent $event) {
+            $event->navItems[] = [
+                'url' => 'cloudinary/cloudinary',
+                'label' => 'Media Library',
+            ];
+        }
+    );
     }
     
     protected function createSettingsModel()
