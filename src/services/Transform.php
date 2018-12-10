@@ -18,7 +18,7 @@ class Transform extends Component
         $options['sign_url'] = true;
         
         // No alt tag specified?
-        if (!isset($options['alt']))
+        if (!isset($options['alt']) && isset($image->title) )
             $options['alt'] = $image->title;
             
         // Scale and crop
