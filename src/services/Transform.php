@@ -28,7 +28,7 @@ class Transform extends Component
         }
         
         // if image is within a Cloudinary folder, add the folder path
-        if ($image->folderPath) {
+        if (isset($image->folderPath)) {
             $urls = $this->generateUrls(str_replace(" ","%20",$image->folderPath).$image->filename, $sizes, $options);
         } else {
             $urls = $this->generateUrls($image->filename, $sizes, $options);
