@@ -14,6 +14,9 @@ class Transform extends Component
      */
     public function image($image, $sizes = [], $options = [])
     {
+        if(!isset($image->filename)){
+            return [];
+        }
         // Secure sign the cloudinary URL
         $options['sign_url'] = true;
         
